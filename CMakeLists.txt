@@ -45,6 +45,8 @@ else()
 	FetchContent_MakeAvailable(Module)
 endif()
 
+add_subdirectory(external/Jolt/Build)
+
 list(APPEND NTSHENGN_DEFINES NTSHENGN_CURRENT_MODULE_PHYSICS)
 
 set(MODULE_SOURCES
@@ -60,7 +62,8 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES} ${HEADERS})
 target_link_libraries(${PROJECT_NAME}
 	PRIVATE
 		NutshellEngine::Module
-		NutshellEngine::Common)
+		NutshellEngine::Common
+		Jolt)
 
 target_compile_options(${PROJECT_NAME}
 	PRIVATE
